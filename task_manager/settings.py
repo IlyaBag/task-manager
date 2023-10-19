@@ -34,6 +34,7 @@ DEBUG = os.getenv('DEBUG')
 ALLOWED_HOSTS = [
     'webserver',
     '127.0.0.1',
+    'task-manager-g6y5.onrender.com',
 ]
 
 
