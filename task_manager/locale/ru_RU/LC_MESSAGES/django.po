@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 01:02+0300\n"
+"POT-Creation-Date: 2023-11-11 23:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/index.html:8
-msgid "Task managet Hexlet"
+#: templates/base.html:8
+msgid "Task manager Hexlet"
 msgstr "Менеджер задач Hexlet"
 
-#: templates/index.html:15
+#: templates/base.html:15
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/index.html:22
+#: templates/base.html:22
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/index.html:29
+#: templates/base.html:29
 msgid "Login"
 msgstr "Вход"
 
-#: templates/index.html:32
+#: templates/base.html:32
 msgid "Register"
 msgstr "Регистрация"
 
-#: templates/index.html:44
+#: templates/base.html:43
+msgid "Hexlet"
+msgstr "Хекслет"
+
+#: templates/index.html:9
 msgid "Hello from Hexlet!"
 msgstr "Привет от Хекслета!"
 
-#: templates/index.html:45
+#: templates/index.html:10
 msgid "Practical programming courses"
 msgstr "Практические курсы по программированию"
 
-#: templates/index.html:47
+#: templates/index.html:12
 msgid "Learn more"
 msgstr "Узнать больше"
-
-#: templates/index.html:54
-msgid "Hexlet"
-msgstr "Хекслет"
