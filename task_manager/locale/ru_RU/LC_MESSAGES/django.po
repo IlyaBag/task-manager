@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-11 23:59+0300\n"
+"POT-Creation-Date: 2023-11-20 22:55+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,23 +21,23 @@ msgstr ""
 msgid "Task manager Hexlet"
 msgstr "Менеджер задач Hexlet"
 
-#: templates/base.html:15
+#: templates/base.html:16
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:22
+#: templates/base.html:23 users/templates/users-list.html:7
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:29
+#: templates/base.html:30
 msgid "Login"
 msgstr "Вход"
 
-#: templates/base.html:32
-msgid "Register"
+#: templates/base.html:33 users/templates/user-create.html:7
+msgid "Registration"
 msgstr "Регистрация"
 
-#: templates/base.html:43
+#: templates/base.html:44
 msgid "Hexlet"
 msgstr "Хекслет"
 
@@ -52,3 +52,7 @@ msgstr "Практические курсы по программировани�
 #: templates/index.html:12
 msgid "Learn more"
 msgstr "Узнать больше"
+
+#: users/templates/user-create.html:11
+msgid "Register"
+msgstr "Зарегистрировать"
