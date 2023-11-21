@@ -13,7 +13,7 @@ from .forms import UserCreateForm
 
 
 class UsersView(TemplateView):
-    template_name = 'users-list.html'
+    template_name = 'users/users-list.html'
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
@@ -22,7 +22,7 @@ class UsersView(TemplateView):
 
 
 class UserCreateView(CreateView):
-    template_name = 'user-create.html'
+    template_name = 'users/user-create.html'
     form_class = UserCreateForm
     success_url = reverse_lazy('users')  # 'login'
 
