@@ -139,9 +139,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOCALE_PATHS = [
-    '/home/ilba/python_code/python-project-52/task_manager/locale',
-]
+LOCALE_PATHS = [BASE_DIR / 'task_manager/locale']
 
 
 # Static files (CSS, JavaScript, Images)
