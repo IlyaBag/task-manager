@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
+from django.contrib.messages import constants as messages
+
 import dj_database_url
 from dotenv import load_dotenv
 
@@ -152,3 +154,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'user_login'
+LOGIN_REDIRECT_URL = 'index_page'
+LOGOUT_REDIRECT_URL = 'index_page'
+
+# Flash message tags
+
+MESSAGE_TAGS = {messages.ERROR: 'danger'}

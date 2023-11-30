@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-20 22:55+0300\n"
+"POT-Creation-Date: 2023-12-02 00:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/base.html:8
+#: templates/base.html:9
 msgid "Task manager Hexlet"
 msgstr "Менеджер задач Hexlet"
 
-#: templates/base.html:16
+#: templates/base.html:17
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:23 users/templates/users-list.html:7
+#: templates/base.html:24 templates/users/users-list.html:17
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:30
+#: templates/base.html:31
+msgid "Statuses"
+msgstr "Статусы"
+
+#: templates/base.html:34
+msgid "Tags"
+msgstr "Метки"
+
+#: templates/base.html:37
+msgid "Tasks"
+msgstr "Задачи"
+
+#: templates/base.html:43
+msgid "Logout"
+msgstr "Выход"
+
+#: templates/base.html:49
 msgid "Login"
 msgstr "Вход"
 
-#: templates/base.html:33 users/templates/user-create.html:7
+#: templates/base.html:52 templates/users/user-create.html:7
 msgid "Registration"
 msgstr "Регистрация"
 
-#: templates/base.html:44
+#: templates/base.html:65
 msgid "Hexlet"
 msgstr "Хекслет"
 
@@ -53,6 +69,54 @@ msgstr "Практические курсы по программировани�
 msgid "Learn more"
 msgstr "Узнать больше"
 
-#: users/templates/user-create.html:11
+#: templates/registration/login.html:17
+msgid "Authentication"
+msgstr "Вход"
+
+#: templates/registration/login.html:21
+msgid "Enter"
+msgstr "Войти"
+
+#: templates/users/user-create.html:11
 msgid "Register"
 msgstr "Зарегистрировать"
+
+#: templates/users/user-delete.html:6
+msgid "Deleting a user"
+msgstr "Удаление пользователя"
+
+#: templates/users/user-delete.html:7
+msgid "Are you sure you want to remove"
+msgstr "Вы уверены, что хотите удалить"
+
+#: templates/users/user-delete.html:10
+msgid "Yes, remove"
+msgstr "Да, удалить"
+
+#: templates/users/user-update.html:7
+msgid "Updating a user"
+msgstr "Изменение пользователя"
+
+#: templates/users/user-update.html:11 templates/users/users-list.html:37
+msgid "Update"
+msgstr "Изменить"
+
+#: templates/users/users-list.html:39
+msgid "Delete"
+msgstr "Удалить"
+
+#: users/mixins.py:9
+msgid "You are not authorized! Please log in."
+msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
+
+#: users/views.py:48 users/views.py:74
+msgid "You do not have permission to change another user."
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: users/views.py:58
+msgid "User successfully updated"
+msgstr "Пользователь успешно изменен"
+
+#: users/views.py:84
+msgid "User successfully deleted"
+msgstr "Пользователь успешно удален"

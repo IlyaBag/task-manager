@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+
+  {% if messages %}
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show"{% endif %}>
+      {{ message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+  {% endif %}
+  
+  <h1 class="my-4">{% trans "Authentication" %}</h1>
+  <form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn btn-primary" type="submit" value="{% trans 'Enter' %}">
+  </form>
+</div>
+{% endblock %}
