@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-02 00:33+0300\n"
+"POT-Creation-Date: 2023-12-03 02:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,51 +21,51 @@ msgstr ""
 msgid "Task manager Hexlet"
 msgstr "Менеджер задач Hexlet"
 
-#: templates/base.html:17
+#: templates/base.html:18
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/base.html:24 templates/users/users-list.html:17
+#: templates/base.html:26 templates/users/users-list.html:17
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:31
+#: templates/base.html:33
 msgid "Statuses"
 msgstr "Статусы"
 
-#: templates/base.html:34
+#: templates/base.html:36
 msgid "Tags"
 msgstr "Метки"
 
-#: templates/base.html:37
+#: templates/base.html:39
 msgid "Tasks"
 msgstr "Задачи"
 
-#: templates/base.html:43
+#: templates/base.html:45
 msgid "Logout"
 msgstr "Выход"
 
-#: templates/base.html:49
+#: templates/base.html:51
 msgid "Login"
 msgstr "Вход"
 
-#: templates/base.html:52 templates/users/user-create.html:7
+#: templates/base.html:54 templates/users/user-create.html:7
 msgid "Registration"
 msgstr "Регистрация"
 
-#: templates/base.html:65
+#: templates/base.html:68
 msgid "Hexlet"
 msgstr "Хекслет"
 
-#: templates/index.html:9
+#: templates/index.html:19
 msgid "Hello from Hexlet!"
 msgstr "Привет от Хекслета!"
 
-#: templates/index.html:10
+#: templates/index.html:20
 msgid "Practical programming courses"
 msgstr "Практические курсы по программированию"
 
-#: templates/index.html:12
+#: templates/index.html:22
 msgid "Learn more"
 msgstr "Узнать больше"
 
@@ -120,3 +120,11 @@ msgstr "Пользователь успешно изменен"
 #: users/views.py:84
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
+
+#: views.py:24
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: views.py:32
+msgid "You are logged out"
+msgstr "Вы разлогинены"
