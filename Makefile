@@ -15,8 +15,13 @@ lint:
 start:
 	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi
 
+test:
+	poetry run python manage.py test
+
 translate:
 	cd $(CURDIR)/task_manager && \
 	poetry run django-admin makemessages --locale ru_RU --ignore=-_-* && \
 	vim $(CURDIR)/task_manager/locale/ru_RU/LC_MESSAGES/django.po && \
 	poetry run django-admin compilemessages
+
+.PHONY: test
