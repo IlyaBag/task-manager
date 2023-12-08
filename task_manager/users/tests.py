@@ -6,14 +6,6 @@ from django.urls import reverse
 class UserTestCase(TestCase):
     """Testing CRUD operations with User model"""
 
-    # fixtures = ['user.json']
-    # username = 'oleguser'
-    # password = 'oLe9$90v'
-    
-    # def example_test_index_page(self):
-    #     response = self.client.get(reverse('users:index'))
-    #     self.assertEqual(response.status_code, 200)
-
     def test_user_create(self):
         username = 'oleguser'
         first_name = 'Oleg'
@@ -33,9 +25,9 @@ class UserTestCase(TestCase):
 
         new_user = User.objects.get(username=username)
 
-        self.assertEqual(new_user.username, username, 'username is incorrect')
-        self.assertEqual(new_user.first_name, first_name, 'first_name is incorrect')
-        self.assertEqual(new_user.last_name, last_name, 'last_name is incorrect')
+        self.assertEqual(new_user.username, username)
+        self.assertEqual(new_user.first_name, first_name)
+        self.assertEqual(new_user.last_name, last_name)
 
     def test_user_update(self):
         username = 'oleguser'
@@ -59,7 +51,7 @@ class UserTestCase(TestCase):
         )
 
         user = User.objects.get(username=username)
-        
+
         changed_first_name = 'Ivan'
         response = self.client.post(
             reverse('user_update', kwargs={'pk': user.pk}),

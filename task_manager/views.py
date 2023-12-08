@@ -27,7 +27,10 @@ class UserLoginView(LoginView):
 
 class UserLogoutView(LogoutView):
     """Add a success flash message to a parent class"""
-    
-    def post(self, request: WSGIRequest, *args: Any, **kwargs: Any) -> TemplateResponse:
+
+    def post(self,
+             request: WSGIRequest,
+             *args: Any,
+             **kwargs: Any) -> TemplateResponse:
         messages.info(request, _('You are logged out'))
         return super().post(request, *args, **kwargs)
