@@ -1,10 +1,11 @@
 PORT ?= 8000
+MANAGE = poetry run python manage.py
 
 build: install
 	psql -a -d $(DATABASE_URL) -f database.sql
 
 dev:
-	poetry run python manage.py runserver
+	$(MANAGE) runserver
 
 install:
 	poetry install || true
@@ -12,11 +13,17 @@ install:
 lint:
 	poetry run flake8 task_manager
 
+makemigrations:
+	$(MANAGE) makemigrations
+
+migrate: makemigrations
+	$(MANAGE) migrate
+
 start:
 	poetry run gunicorn -w 5 -b 0.0.0.0:$(PORT) task_manager.wsgi
 
 test:
-	poetry run python manage.py test
+	$(MANAGE) test
 
 translate:
 	cd $(CURDIR)/task_manager && \
