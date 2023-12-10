@@ -1,0 +1,8 @@
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "name": "oleguser",
+        "password": "oLe9$90v"
+    }
+}
