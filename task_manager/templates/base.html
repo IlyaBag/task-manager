@@ -23,14 +23,14 @@
       <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/users/">{% translate "Users" %}</a>
+            <a class="nav-link" href="{% url 'users' %}">{% translate "Users" %}</a>
           </li>
         </ul>
         
         {% if user.is_authenticated %}
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">{% translate "Statuses" %}</a>
+            <a class="nav-link" href="{% url 'statuses' %}">{% translate "Statuses" %}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">{% translate "Tags" %}</a>
@@ -40,7 +40,7 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <form action="/logout/" method="post">
+          <form action="{% url 'user_logout' %}" method="post">
             {% csrf_token %}
             <input class="btn nav-link" type="submit" value="{% trans 'Logout' %} ({{ user.username }})">
           </form>
