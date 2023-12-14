@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-14 19:43+0000\n"
+"POT-Creation-Date: 2023-12-14 23:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,18 @@ msgstr "Имя"
 #: statuses/models.py:8 templates/statuses/statuses-list.html:18
 msgid "Creation date"
 msgstr "Дата создания"
+
+#: statuses/views.py:27
+msgid "Status successfully created"
+msgstr "Статус успешно создан"
+
+#: statuses/views.py:35
+msgid "Status changed successfully"
+msgstr "Статус успешно изменен"
+
+#: statuses/views.py:43
+msgid "Status successfully deleted"
+msgstr "Статус успешно удален"
 
 #: templates/base.html:9
 msgid "Task manager Hexlet"

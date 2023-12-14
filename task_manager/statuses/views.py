@@ -1,6 +1,7 @@
 from typing import Any
-from django.template.response import TemplateResponse
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
 
@@ -18,22 +19,25 @@ class StatusesListView(CustomLoginRequiredMixin, TemplateView):
         return context
 
 
-class StatusCreateView(CustomLoginRequiredMixin, CreateView):
+class StatusCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     """Create a new status."""
     model = StatusModel
     fields = ['name']
     template_name_suffix = '-create'
+    success_message = _('Status successfully created')
 
 
-class StatusUpdateView(CustomLoginRequiredMixin, UpdateView):
+class StatusUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """Update an existing status"""
     model = StatusModel
     fields = ['name']
     template_name_suffix = '-update'
+    success_message = _('Status changed successfully')
 
 
-class StatusDeleteView(CustomLoginRequiredMixin, DeleteView):
+class StatusDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """Delete an existing status"""
     model = StatusModel
     template_name_suffix = '-delete'
     success_url = reverse_lazy('statuses')
+    success_message = _('Status successfully deleted')
