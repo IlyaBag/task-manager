@@ -2,7 +2,9 @@ APP ?=
 PORT ?= 8000
 MANAGE = poetry run python manage.py
 
-build: install
+build: install migrate
+
+page_analyzer_db:
 	psql -a -d $(DATABASE_URL) -f database.sql
 
 dev:
