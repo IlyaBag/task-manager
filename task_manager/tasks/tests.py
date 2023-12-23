@@ -87,3 +87,21 @@ class TaskTestCase(TestCase):
         all_tasks = TaskModel.objects.all()
 
         self.assertNotIn(task, all_tasks)
+
+    def test_task_delete_only_by_author(self):
+        self.client.logout()
+        self.client.post(
+            reverse('user_create'),
+            data={'username': 'not_author',
+                  'password1': 'password',
+                  'password2': 'password'}
+        )
+        self.client.login(username='not_author', password='password')
+
+        task = TaskModel.objects.get(name='Use TDD')
+
+        self.client.post(reverse('task_delete', kwargs={'pk': task.pk}))
+
+        all_tasks = TaskModel.objects.all()
+
+        self.assertIn(task, all_tasks)
