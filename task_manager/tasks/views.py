@@ -75,7 +75,7 @@ class TaskDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
         task_id = kwargs.get('pk')
         task = TaskModel.objects.get(id=task_id)
         if request.user.id != task.author.id:
-            messages.error(request, _('Only the author of a task can delete it'))  # Задачу может удалить только её автор
+            messages.error(request, _('Only the author of a task can delete it'))
             return redirect(reverse_lazy('tasks'))
         return super().get(request, *args, **kwargs)
 
