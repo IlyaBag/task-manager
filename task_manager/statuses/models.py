@@ -9,3 +9,6 @@ class StatusModel(models.Model):
 
     def get_absolute_url(self):
         return reverse('statuses')
+    
+    def __str__(self) -> str:
+        return self.name
