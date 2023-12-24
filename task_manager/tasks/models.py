@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import LabelModel
 from task_manager.statuses.models import StatusModel
@@ -15,7 +15,7 @@ class TaskModel(models.Model):
         on_delete=models.PROTECT,
         verbose_name = _('Status')
     )
-    labels = models.ManyToManyField(LabelModel)
+    labels = models.ManyToManyField(LabelModel, verbose_name=_('Labels'))
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
