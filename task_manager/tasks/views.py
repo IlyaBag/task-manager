@@ -40,7 +40,7 @@ class TaskInfoView(CustomLoginRequiredMixin, TemplateView):
 class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
     """Create a new task."""
     model = TaskModel
-    fields = ['name', 'description', 'status', 'executor']
+    fields = ['name', 'description', 'status', 'executor', 'labels']
     template_name_suffix = '-create'
     success_message = _('Task successfully created')
 
@@ -59,7 +59,7 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
 class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """Update an existing task."""
     model = TaskModel
-    fields = ['name', 'description', 'status', 'executor']
+    fields = ['name', 'description', 'status', 'executor', 'labels']
     template_name_suffix = '-update'
     success_message = _('Task changed successfully')
 
