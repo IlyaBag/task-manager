@@ -1,6 +1,10 @@
 from typing import Any
 
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.forms.forms import BaseForm
+from django.http.response import HttpResponse
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, UpdateView, DeleteView
@@ -42,3 +46,14 @@ class LabelDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView)
     template_name_suffix  = '-delete'
     success_url = reverse_lazy('labels')
     success_message = _('Label successfully deleted')
+
+    def form_valid(self, form: BaseForm) -> HttpResponse:
+        """It is forbidden to delete tags assigned to at least one task."""
+        label = LabelModel.objects.get(id=self.object.pk)
+        if label.taskmodel_set.count() > 0:
+            messages.error(
+                self.request,
+                _('Cannot remove label because it is in use')
+            )
+            return redirect('labels')
+        return super().form_valid(form)
