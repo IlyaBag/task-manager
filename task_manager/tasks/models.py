@@ -15,7 +15,11 @@ class TaskModel(models.Model):
         on_delete=models.PROTECT,
         verbose_name = _('Status')
     )
-    labels = models.ManyToManyField(LabelModel, verbose_name=_('Labels'))
+    labels = models.ManyToManyField(
+        LabelModel,
+        verbose_name=_('Labels'),
+        blank=True
+    )
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
