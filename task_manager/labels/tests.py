@@ -67,3 +67,21 @@ class LabelsTestCase(TestCase):
 
         all_labels = LabelModel.objects.all()
         self.assertNotIn(label, all_labels)
+
+    def test_label_delete_prohibited(self):
+        self.client.post(
+            reverse('status_create'),
+            {'name': 'testing'}
+        )
+        self.client.post(
+            reverse('task_create'),
+            {
+                'name': 'Taskname',
+                'status': 1,
+                'labels': 1
+            }
+        )
+
+        response = self.client.post(reverse('label_delete', kwargs={'pk': 1}))
+        self.assertRedirects(response, reverse('labels'), 302)
+        self.assertTrue(LabelModel.objects.count() == 1)
