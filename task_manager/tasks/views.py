@@ -1,7 +1,6 @@
 from typing import Any
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from django.forms.forms import BaseForm
 from django.http import HttpRequest, HttpResponse
 from django.http.response import HttpResponse
 from django.shortcuts import redirect
@@ -9,7 +8,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic.base import TemplateView
-from task_manager.tasks.forms import TaskViewFilterForm
+from task_manager.tasks.filters import TaskFilter
 
 from task_manager.tasks.models import TaskModel
 from task_manager.users.mixins import CustomLoginRequiredMixin
@@ -21,8 +20,11 @@ class TasksListView(CustomLoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
-        context['tasks'] = TaskModel.objects.all()
-        context['form'] = TaskViewFilterForm()
+        filter = TaskFilter(data=self.request.GET,
+                            queryset=TaskModel.objects.all(),
+                            request=self.request)
+        context['form'] = filter.form
+        context['tasks'] = filter.qs
         return context
 
 
