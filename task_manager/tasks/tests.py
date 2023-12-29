@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from task_manager.statuses.models import StatusModel
 
 from task_manager.tasks.models import TaskModel
 
@@ -105,3 +106,100 @@ class TaskTestCase(TestCase):
         all_tasks = TaskModel.objects.all()
 
         self.assertIn(task, all_tasks)
+
+
+class TaskFiltersTestCase(TestCase):
+    """Testing task list display filters"""
+    username1 = 'User_one'
+    username2 = 'User_two'
+    password = 'qweruiop'
+
+    status1 = 'New'
+    status2 = 'In progress'
+
+    label1 = 'bug'
+    label2 = 'fix'
+    label3 = 'check'
+
+    task1 = {
+        'name': 'Code',
+        'status': 2,
+        'labels': 1,
+    }
+    task2 = {
+        'name': 'Test',
+        'status': 2,
+        'labels': [2, 3],
+    }
+    task3 = {
+        'name': 'Deploy',
+        'status': 1,
+        'labels': 3,
+    }
+    
+    def setUp(self) -> None:
+        for username in [self.username1, self.username2]:
+            self.client.post(
+                reverse('user_create'),
+                {
+                    'username': username,
+                    'password1': self.password,
+                    'password2': self.password,
+                }
+            )
+        self.client.login(username=self.username1, password=self.password)
+
+        for status in [self.status1, self.status2]:
+            self.client.post(
+                reverse('status_create'),
+                {'name': status}
+            )
+
+        for label in [self.label1, self.label2, self.label3]:
+            self.client.post(
+                reverse('label_create'),
+                {'name': label}
+            )
+
+        self.client.post(
+            reverse('task_create'),
+            {**self.task1}
+        )
+        self.client.logout
+        self.client.login(username=self.username2, password=self.password)
+        for task in [self.task2, self.task3]:
+            self.client.post(
+                reverse('task_create'),
+                {**task}
+            )
+
+    def test_status_filter(self):
+        response = self.client.get(
+            reverse('tasks'),
+            QUERY_STRING='status=1'
+        )
+        self.assertContains(response, self.task3.get('name'))
+        self.assertNotContains(response, self.task1.get('name'))
+        self.assertNotContains(response, self.task2.get('name'))
+
+    def test_label_filter(self):
+        response = self.client.get(
+            reverse('tasks'),
+            QUERY_STRING='label=3'
+        )
+        self.assertContains(response, self.task2.get('name'))
+        self.assertContains(response, self.task3.get('name'))
+        self.assertNotContains(response, self.task1.get('name'))
+
+    def test_self_tasks_filter(self):
+        response = self.client.get(
+            reverse('tasks'),
+            QUERY_STRING='self_tasks=on'
+        )
+        current_user = response.wsgi_request.user
+        current_user_tasks = TaskModel.objects.filter(author=current_user)
+        other_tasks = TaskModel.objects.exclude(author=current_user)
+        for task in current_user_tasks:
+            self.assertContains(response, task.name)
+        for task in other_tasks:
+            self.assertNotContains(response, task.name)
