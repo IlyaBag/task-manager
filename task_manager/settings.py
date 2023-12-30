@@ -33,6 +33,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False')
+if DEBUG.lower() in ('false', 'f', '0', 'no', ''):
+    DEBUG = False
 
 ALLOWED_HOSTS = [
     'webserver',
