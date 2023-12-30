@@ -1,6 +1,5 @@
 from django.test import TestCase
 from django.urls import reverse
-from task_manager.statuses.models import StatusModel
 
 from task_manager.tasks.models import TaskModel
 
@@ -136,7 +135,7 @@ class TaskFiltersTestCase(TestCase):
         'status': 1,
         'labels': 3,
     }
-    
+
     def setUp(self) -> None:
         for username in [self.username1, self.username2]:
             self.client.post(

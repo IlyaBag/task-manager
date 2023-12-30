@@ -2,7 +2,6 @@ from typing import Any
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpRequest, HttpResponse
-from django.http.response import HttpResponse
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -48,14 +47,13 @@ class TaskCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     def form_valid(self, form):
         """
-        If the form is valid, add current user to "author" field 
+        If the form is valid, add current user to "author" field
         and save the associated model.
         """
         self.object = form.save(commit=False)
         self.object.author = self.request.user
         self.object.save()
         return super().form_valid(form)
-
 
 
 class TaskUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView):

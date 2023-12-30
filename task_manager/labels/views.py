@@ -28,7 +28,7 @@ class LabelCreateView(CustomLoginRequiredMixin, SuccessMessageMixin, CreateView)
     """Create a new label."""
     model = LabelModel
     fields = ['name']
-    template_name_suffix  = '-create'
+    template_name_suffix = '-create'
     success_message = _('Label successfully created')
 
 
@@ -36,14 +36,14 @@ class LabelUpdateView(CustomLoginRequiredMixin, SuccessMessageMixin, UpdateView)
     """Update an existing label."""
     model = LabelModel
     fields = ['name']
-    template_name_suffix  = '-update'
+    template_name_suffix = '-update'
     success_message = _('Label changed successfully')
 
 
 class LabelDeleteView(CustomLoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """Delete an existing label."""
     model = LabelModel
-    template_name_suffix  = '-delete'
+    template_name_suffix = '-delete'
     success_url = reverse_lazy('labels')
     success_message = _('Label successfully deleted')
 

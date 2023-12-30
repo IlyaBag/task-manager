@@ -13,7 +13,7 @@ class TaskModel(models.Model):
     status = models.ForeignKey(
         StatusModel,
         on_delete=models.PROTECT,
-        verbose_name = _('Status')
+        verbose_name=_('Status')
     )
     labels = models.ManyToManyField(
         LabelModel,
@@ -38,7 +38,6 @@ class TaskModel(models.Model):
 
     def get_absolute_url(self):
         return reverse('tasks')
-    
+
     def __str__(self) -> str:
         return self.name
-    

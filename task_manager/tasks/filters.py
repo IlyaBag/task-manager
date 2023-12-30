@@ -14,7 +14,7 @@ class TaskFilter(django_filters.FilterSet):
 
     label = django_filters.ModelChoiceFilter(
         queryset=LabelModel.objects.all(),
-        field_name = 'labels',
+        field_name='labels',
         label=_('Label')
     )
     self_tasks = django_filters.BooleanFilter(
