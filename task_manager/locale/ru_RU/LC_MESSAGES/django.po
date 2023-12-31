@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-29 23:20+0300\n"
+"POT-Creation-Date: 2023-12-31 16:57+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,11 +58,11 @@ msgstr "Статус успешно изменен"
 msgid "Status successfully deleted"
 msgstr "Статус успешно удален"
 
-#: tasks/filters.py:11
+#: tasks/filters.py:18
 msgid "Label"
 msgstr "Метка"
 
-#: tasks/filters.py:14
+#: tasks/filters.py:22
 msgid "Self tasks only"
 msgstr "Только свои задачи"
 
@@ -90,19 +90,19 @@ msgstr "Исполнитель"
 msgid "Author"
 msgstr "Автор"
 
-#: tasks/views.py:47
+#: tasks/views.py:46
 msgid "Task successfully created"
 msgstr "Задача успешно создана"
 
-#: tasks/views.py:66
+#: tasks/views.py:64
 msgid "Task changed successfully"
 msgstr "Задача успешно изменена"
 
-#: tasks/views.py:74
+#: tasks/views.py:72
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
-#: tasks/views.py:80
+#: tasks/views.py:78
 msgid "Only the author of a task can delete it"
 msgstr "Задачу может удалить только её автор"
 
@@ -258,15 +258,19 @@ msgstr "Изменение пользователя"
 msgid "You are not authorized! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: users/views.py:48 users/views.py:74
+#: users/views.py:33
+msgid "User successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: users/views.py:50 users/views.py:76
 msgid "You do not have permission to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: users/views.py:58
+#: users/views.py:60
 msgid "User successfully updated"
 msgstr "Пользователь успешно изменен"
 
-#: users/views.py:84
+#: users/views.py:86
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
 
@@ -277,4 +281,3 @@ msgstr "Вы залогинены"
 #: views.py:35
 msgid "You are logged out"
 msgstr "Вы разлогинены"
-

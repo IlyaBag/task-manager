@@ -1,6 +1,7 @@
 from typing import Any
 
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -24,11 +25,12 @@ class UsersView(TemplateView):
         return context
 
 
-class UserCreateView(CreateView):
+class UserCreateView(SuccessMessageMixin, CreateView):
     """Register a new user."""
     template_name = 'users/user-create.html'
     form_class = UserCreateForm
     success_url = reverse_lazy('user_login')
+    success_message = _('User successfully registered')
 
 
 class UserUpdateView(CustomLoginRequiredMixin, View):
