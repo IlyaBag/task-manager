@@ -42,7 +42,7 @@
         <ul class="navbar-nav">
           <form action="{% url 'user_logout' %}" method="post">
             {% csrf_token %}
-            <input class="btn nav-link" type="submit" value="{% trans 'Logout' %} ({{ user.username }})">
+            <input class="btn nav-link" type="submit" value="{% trans 'Logout' %}">
           </form>
         </ul>
         {% else %}
