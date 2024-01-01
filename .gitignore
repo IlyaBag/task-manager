@@ -3,5 +3,7 @@ __pycache__
 *.pyc
 .env
 *.sqlite3
+.coverage
+coverage.*
 
 ^_^*

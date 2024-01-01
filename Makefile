@@ -34,4 +34,8 @@ translate:
 	vim $(CURDIR)/task_manager/locale/ru_RU/LC_MESSAGES/django.po && \
 	poetry run django-admin compilemessages
 
+testcoverage:
+	poetry run coverage run manage.py test && \
+	poetry run coverage xml 
+
 .PHONY: test
