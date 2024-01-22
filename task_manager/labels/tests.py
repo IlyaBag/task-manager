@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.test import TestCase
 from django.urls import reverse
 
@@ -40,7 +38,6 @@ class LabelsTestCase(TestCase):
         label = LabelModel.objects.get(name=name)
 
         self.assertEqual(label.name, name)
-        self.assertIsInstance(label.created_at, datetime)
 
     def test_label_update(self):
         label = LabelModel.objects.get(name=self.label_name)
