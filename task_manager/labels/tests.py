@@ -6,23 +6,23 @@ from task_manager.labels.models import LabelModel
 
 class LabelsTestCase(TestCase):
     """Testing CRUD operations with Label model"""
-    username = 'oleguser'
-    password = 'oLe9$90v'
-    label_name = 'Important'
+    USERNAME = 'oleguser'
+    PASSWORD = 'oLe9$90v'
+    LABEL_NAME = 'Important'
 
     def setUp(self) -> None:
         self.client.post(
             reverse('user_create'),
-            data={'username': self.username,
-                  'password1': self.password,
-                  'password2': self.password}
+            data={'username': self.USERNAME,
+                  'password1': self.PASSWORD,
+                  'password2': self.PASSWORD}
         )
 
-        self.client.login(username=self.username, password=self.password)
+        self.client.login(username=self.USERNAME, password=self.PASSWORD)
 
         self.client.post(
             reverse('label_create'),
-            data={'name': self.label_name}
+            data={'name': self.LABEL_NAME}
         )
 
     def test_label_create(self):
@@ -40,7 +40,7 @@ class LabelsTestCase(TestCase):
         self.assertEqual(label.name, name)
 
     def test_label_update(self):
-        label = LabelModel.objects.get(name=self.label_name)
+        label = LabelModel.objects.get(name=self.LABEL_NAME)
 
         changed_name = 'Fix'
         response = self.client.post(
@@ -54,7 +54,7 @@ class LabelsTestCase(TestCase):
         self.assertEqual(label.name, changed_name)
 
     def test_label_delete(self):
-        label = LabelModel.objects.get(name=self.label_name)
+        label = LabelModel.objects.get(name=self.LABEL_NAME)
 
         response = self.client.post(
             reverse('label_delete', kwargs={'pk': label.pk})
@@ -65,11 +65,33 @@ class LabelsTestCase(TestCase):
         all_labels = LabelModel.objects.all()
         self.assertNotIn(label, all_labels)
 
-    def test_label_delete_prohibited(self):
+
+class LabelsRestrictionTestCase(TestCase):
+    """You cannot delete a label if it is associated with a task."""
+    USERNAME = 'oleguser'
+    PASSWORD = 'oLe9$90v'
+    LABEL_NAME = 'Important'
+
+    def setUp(self) -> None:
+        self.client.post(
+            reverse('user_create'),
+            data={'username': self.USERNAME,
+                  'password1': self.PASSWORD,
+                  'password2': self.PASSWORD}
+        )
+
+        self.client.login(username=self.USERNAME, password=self.PASSWORD)
+
+        self.client.post(
+            reverse('label_create'),
+            data={'name': self.LABEL_NAME}
+        )
+
         self.client.post(
             reverse('status_create'),
             {'name': 'testing'}
         )
+
         self.client.post(
             reverse('task_create'),
             {
@@ -79,6 +101,12 @@ class LabelsTestCase(TestCase):
             }
         )
 
+    def test_label_delete_prohibited(self):
+        label = LabelModel.objects.get(name=self.LABEL_NAME)
+
         response = self.client.post(reverse('label_delete', kwargs={'pk': 1}))
+
         self.assertRedirects(response, reverse('labels'), 302)
-        self.assertTrue(LabelModel.objects.count() == 1)
+
+        all_labels = LabelModel.objects.all()
+        self.assertIn(label, all_labels)
