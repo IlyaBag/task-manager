@@ -3,9 +3,8 @@ PORT ?= 8000
 MANAGE = poetry run python manage.py
 
 build: install migrate
-
-page_analyzer_db:
-	psql -a -d $(DATABASE_URL) -f database.sql
+	poetry run python manage.py collectstatic --no-input
+	poetry run python manage.py createsu
 
 dev:
 	$(MANAGE) runserver
